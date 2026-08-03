@@ -12,6 +12,24 @@ been bitten twice, by `react-native-mmkv` v4 replacing `new MMKV()` with `create
 and by `decodeAudioDataSource` existing only on the web context type. Check the installed
 `.d.ts` files in `node_modules` rather than trusting recall.
 
+## Expo skills
+
+The official Expo agent skills are installed in `.claude/skills/` (from
+https://github.com/expo/skills, MIT). Use them: they exist precisely because remembered
+Expo knowledge goes stale. The ones most relevant to the work ahead:
+
+- `expo-project-structure` — `src/` layout and routes-only `app/`, before the UI lands.
+- `expo-router` — navigation, native stacks, modals, tabs.
+- `expo-native-ui` — native-feeling styling, semantic colors, animations. Read this
+  before reaching for web-CSS habits.
+- `expo-upgrade` — SDK upgrades.
+
+Update with `npx skills@latest update`. They are committed rather than ignored, so the
+versions are pinned with the project.
+
+Their telemetry is opt-in and off by default; nothing is sent unless someone explicitly
+runs `telemetry.cjs --on`. Leave it off unless the founder asks otherwise.
+
 ## Sources of truth
 
 - The working application is the truth about what is implemented.
