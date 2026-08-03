@@ -1,6 +1,14 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "strict": true,
+    // `node` is needed by the content tests, which read the audio assets off disk to
+    // verify every kana has a real clip. Naming it explicitly also keeps the RN globals
+    // from crowding it out of automatic @types discovery.
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }
