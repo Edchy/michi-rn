@@ -14,9 +14,21 @@ and by `decodeAudioDataSource` existing only on the web context type. Check the 
 
 ## Expo skills
 
-The official Expo agent skills are installed in `.claude/skills/` (from
-https://github.com/expo/skills, MIT). Use them: they exist precisely because remembered
-Expo knowledge goes stale. The ones most relevant to the work ahead:
+The official Expo agent skills (from https://github.com/expo/skills, MIT) are installed
+twice, once per agent:
+
+```
+.claude/skills/   Claude Code
+.agents/skills/   Codex
+```
+
+Both are **real files, not symlinks** — installed with `--copy` on purpose. The CLI
+symlinks by default, which is fine locally but commits a bare pointer that dangles on a
+fresh clone or in CI. Duplicate files are what git and CI expect; nobody hand-edits these
+anyway.
+
+Use them: they exist precisely because remembered Expo knowledge goes stale. The ones
+most relevant to the work ahead:
 
 - `expo-project-structure` — `src/` layout and routes-only `app/`, before the UI lands.
 - `expo-router` — navigation, native stacks, modals, tabs.
@@ -24,8 +36,18 @@ Expo knowledge goes stale. The ones most relevant to the work ahead:
   before reaching for web-CSS habits.
 - `expo-upgrade` — SDK upgrades.
 
-Update with `npx skills@latest update`. They are committed rather than ignored, so the
-versions are pinned with the project.
+Update both copies with `npx skills@latest update`. They are committed rather than
+ignored, so the versions are pinned with the project.
+
+`skills-lock.json` records each skill's source and content hash, but **not** which agent
+directories it was installed to. So restoring from the lockfile alone may not recreate
+both locations. To reinstall from scratch, repeat the original command:
+
+```sh
+npx skills@latest add expo/skills --skill '*' --agent claude-code --agent codex --copy -y
+```
+
+Note that `--agent` must be repeated per agent; a comma-separated list is rejected.
 
 Their telemetry is opt-in and off by default; nothing is sent unless someone explicitly
 runs `telemetry.cjs --on`. Leave it off unless the founder asks otherwise.
