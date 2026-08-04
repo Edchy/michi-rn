@@ -1,8 +1,11 @@
 # Michi RN agent instructions
 
 This is the React Native rebuild of Michi. The web app at `../michi` is **frozen
-reference**, tagged `web-reference`. Read `README.md` here first, then reach into
-`../michi` for anything this repo does not yet answer.
+reference**, tagged `web-reference`.
+
+Read `docs/next-session.md` first — it carries the state of play and the immediate next
+step. Then `README.md`. Then reach into `../michi` for anything this repo does not yet
+answer.
 
 ## Expo has changed
 

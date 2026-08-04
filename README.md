@@ -6,6 +6,9 @@ without streaks, points, punishment, or other engagement tricks.
 This repository is the native rebuild. The web app at `../michi` is frozen reference,
 tagged `web-reference`.
 
+**Starting a session?** Read `docs/next-session.md` first. It says where this was left,
+what to do first, and what is not decided yet.
+
 ## Current state
 
 This is a **scaffold**, not a playable app. What exists:
